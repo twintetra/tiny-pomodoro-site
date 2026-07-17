@@ -177,12 +177,10 @@
     }
 
     .badge-local  { background: #e8f4f0; color: #1a6650; }
-    .badge-sync   { background: #e8eef8; color: #1a3a6b; }
     .badge-memory { background: #f2f0f8; color: #4a3a88; }
 
     @media (prefers-color-scheme: dark) {
       .badge-local  { background: #0f2e26; color: #5ecaaa; }
-      .badge-sync   { background: #0f1e3a; color: #6aaced; }
       .badge-memory { background: #1e1535; color: #9d8ee0; }
     }
 
@@ -210,13 +208,13 @@
       <span class="app-name">Tiny Pomodoro Timer</span>
     </div>
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: <time>March 20, 2026</time></p>
+    <p class="meta">Effective date: <time>July 17, 2026</time></p>
   </header>
   <div class="callout">
     <strong>The short version</strong>
-    Tiny Pomodoro Timer does not collect, transmit, or sell any personal data.
-    Everything stays on your device — except your license key, which is verified
-    with Freemius solely to confirm your purchase.
+    Tiny Pomodoro Timer does not collect, transmit, or sell any data.
+    The extension makes no network requests. Everything — your timer,
+    your statistics, your settings — stays on your device.
   </div>
   <h2>1. Who we are</h2>
   <p>
@@ -227,7 +225,7 @@
   <h2>2. Data stored on your device</h2>
   <p>
     The extension stores the following data locally on your device.
-    This data never leaves your browser unless explicitly described below.
+    This data never leaves your browser.
   </p>
   <table class="data-table">
     <thead>
@@ -246,12 +244,7 @@
       <tr>
         <td>Focus session statistics (minutes focused per day, keyed by date)</td>
         <td><span class="badge badge-local">chrome.storage.local</span></td>
-        <td>Powers the statistics heatmap (Premium feature)</td>
-      </tr>
-      <tr>
-        <td>License key and activation record</td>
-        <td><span class="badge badge-sync">chrome.storage.sync</span></td>
-        <td>Unlocks Premium features; synced across your Chrome devices signed into the same Google account, if Chrome Sync is enabled. If Chrome Sync is off, this data remains local to your device.</td>
+        <td>Powers the statistics heatmap</td>
       </tr>
       <tr>
         <td>UI preferences (theme, mute)</td>
@@ -261,35 +254,34 @@
     </tbody>
   </table>
   <p>
-    When Chrome Sync is enabled, <code>chrome.storage.sync</code> data is stored
-    by Google on servers associated with your Google account, under
-    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
-    This applies only to the license record if you have activated Premium.
-    If Chrome Sync is disabled, this data never leaves your device.
+    All of this data is stored exclusively in your browser. It is not synced to
+    any server, and we have no way to access it. Uninstalling the extension
+    removes it.
   </p>
   <h2>3. Network requests</h2>
   <p>
-    The extension makes network requests only for license verification.
-    No other data is ever sent over the network.
+    The extension makes no network requests. It requests no access to any
+    external website or API. All assets — including fonts and the alert
+    sound — are bundled inside the extension and load locally.
+  </p>
+  <p>
+    The popup contains optional buttons that, when you click them, open an
+    external website in a new browser tab:
   </p>
   <ul>
     <li>
-      <strong>License activation</strong> — when you enter a license key, the key
-      and a randomly generated anonymous installation ID are sent to
-      <a href="https://freemius.com/privacy/" target="_blank" rel="noopener">Freemius</a>
-      (<code>api.freemius.com</code>) to confirm the purchase is valid.
+      <strong>Leave a review</strong> — opens the extension's review page on the
+      <a href="https://chromewebstore.google.com/detail/tiny-pomodoro-timer/fdbcaaniljdgfakhhdmifnbpmfcgnnpd/reviews" target="_blank" rel="noopener">Chrome Web Store</a>.
     </li>
     <li>
-      <strong>License re-verification</strong> — at most once every 7 days, the
-      extension silently re-checks your license status with Freemius to detect
-      cancellations or refunds. Only the anonymous installation ID and license key
-      are transmitted.
+      <strong>Support the developer</strong> — opens our donation page on
+      <a href="https://www.donationalerts.com/r/twintetra" target="_blank" rel="noopener">DonationAlerts</a>.
     </li>
   </ul>
   <p>
-    We do not log, store, or process these requests on any server we operate.
-    Freemius is the sole recipient; their privacy practices are described at
-    <a href="https://freemius.com/privacy/" target="_blank" rel="noopener">freemius.com/privacy</a>.
+    These are ordinary links: nothing is transmitted by the extension itself,
+    and no data is attached to them. Once opened, those websites are governed
+    by their own privacy policies.
   </p>
   <h2>4. Data we do not collect</h2>
   <ul>
@@ -297,6 +289,7 @@
     <li>We do not track browsing history or page visits.</li>
     <li>We do not use analytics, telemetry, or crash-reporting services.</li>
     <li>We do not use cookies.</li>
+    <li>We do not use accounts, license keys, or any form of registration.</li>
     <li>We do not share any data with advertisers or data brokers.</li>
   </ul>
   <h2>5. Permissions used</h2>
@@ -321,8 +314,8 @@
         <td>To open the alert page when a session completes, and to focus it if already open</td>
       </tr>
       <tr>
-        <td><code>host permission: api.freemius.com</code></td>
-        <td>To communicate with Freemius for license verification only</td>
+        <td><code>offscreen</code></td>
+        <td>To run an invisible extension page that keeps the countdown accurate to the second while the popup is closed. It runs entirely within the extension and accesses no web content.</td>
       </tr>
     </tbody>
   </table>
